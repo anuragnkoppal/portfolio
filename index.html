@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Anurag N Koppal — Backend Software Engineer</title>
-<meta name="description" content="Backend SDE at DealShare. Java, Spring Boot, Kafka, AWS. Builder of event-driven systems and agentic AI tooling.">
 <meta property="og:title" content="Anurag N Koppal — Backend Software Engineer">
 <meta property="og:description" content="Event-driven backend systems in Java, Spring Boot & Kafka. Agentic AI tooling that reviews code on its own. Every metric shipped to production.">
 <meta property="og:type" content="website">
@@ -14,6 +13,7 @@
 <meta name="twitter:title" content="Anurag N Koppal — Backend Software Engineer">
 <meta name="twitter:image" content="https://anuragnkoppal.github.io/portfolio/assets/og-image.png">
 <link rel="icon" type="image/png" href="assets/favicon.png">
+<meta name="description" content="Backend SDE at DealShare. Java, Spring Boot, Kafka, AWS. Builder of event-driven systems and agentic AI tooling.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet">
@@ -30,13 +30,9 @@ a{color:var(--green);text-decoration:none}
 a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible,th:focus-visible{outline:2px solid var(--green);outline-offset:3px}
 .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-
-/* reveal on scroll */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-
-/* nav */
 nav{position:sticky;top:0;z-index:50;background:rgba(251,251,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;max-width:1060px;margin:0 auto}
 .logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.95rem;color:var(--ink)}
@@ -45,24 +41,16 @@ nav{position:sticky;top:0;z-index:50;background:rgba(251,251,248,.92);backdrop-f
 .nav-links a{color:var(--muted)}
 .nav-links a:hover{color:var(--green);text-decoration:none}
 @media(max-width:700px){.nav-links{display:none}}
-
-/* ticker */
 .ticker{border-bottom:1px solid var(--line);background:var(--ink);color:#E8EDE9;overflow:hidden;white-space:nowrap}
 .ticker-track{display:inline-block;padding:9px 0;animation:tick 34s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
 .ticker-track span{margin:0 26px}
 .up{color:#4CD48F}.down{color:#FF8A6B}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.ticker-track{animation:none;padding-left:24px}}
-
-/* hero */
 header{position:relative;padding:96px 0 72px;border-bottom:1px solid var(--line);overflow:hidden}
 #candles{position:absolute;inset:0;width:100%;height:100%;opacity:.10;pointer-events:none}
 .hero-inner{position:relative}
-.terminal{
-  display:inline-block;background:var(--ink);color:#D9E4DD;border-radius:8px;
-  padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;margin-bottom:26px;
-  box-shadow:0 8px 30px rgba(21,31,26,.18);
-}
+.terminal{display:inline-block;background:var(--ink);color:#D9E4DD;border-radius:8px;padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;margin-bottom:26px;box-shadow:0 8px 30px rgba(21,31,26,.18)}
 .terminal .dots{display:inline-flex;gap:6px;margin-right:14px;vertical-align:middle}
 .terminal .dots i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .terminal .dots i:nth-child(1){background:#FF6B5B}.terminal .dots i:nth-child(2){background:#FFC24A}.terminal .dots i:nth-child(3){background:#37C871}
@@ -77,14 +65,10 @@ h1 em{font-style:normal;color:var(--green)}
 .btn:hover{background:var(--ink);color:var(--paper);text-decoration:none}
 .btn.primary{background:var(--green);border-color:var(--green);color:#fff}
 .btn.primary:hover{background:#08633C;border-color:#08633C}
-
-/* sections */
 section{padding:76px 0;border-bottom:1px solid var(--line)}
 .sec-label{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
 h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.01em;margin-bottom:34px;line-height:1.15}
 h2 em{font-style:normal;color:var(--green)}
-
-/* about */
 .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
 .about-grid p{margin-bottom:16px}
 .fact-card{background:var(--card);border:1px solid var(--line);padding:26px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;align-self:start}
@@ -92,8 +76,6 @@ h2 em{font-style:normal;color:var(--green)}
 .fact-card dt:first-child{margin-top:0}
 .fact-card dd{color:var(--ink);font-weight:500;margin-top:2px}
 @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
-
-/* experience */
 .job{border:1px solid var(--line);background:var(--card);padding:30px;margin-bottom:22px}
 .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:4px}
 .job-head h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.15rem}
@@ -104,8 +86,6 @@ h2 em{font-style:normal;color:var(--green)}
 .job li::before{content:"▸";position:absolute;left:0;color:var(--green)}
 .tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
 .tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;border:1px solid var(--line);padding:3px 10px;color:var(--muted)}
-
-/* projects */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}
 .proj{border:1px solid var(--line);background:var(--card);padding:28px;display:flex;flex-direction:column}
 .proj h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:10px}
@@ -113,8 +93,6 @@ h2 em{font-style:normal;color:var(--green)}
 .proj .tags{margin-top:16px}
 .proj-badge{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 @media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
-
-/* screener demo */
 .screener{border:1px solid var(--line);background:var(--card);padding:28px}
 .screener-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px}
 .screener-head h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.1rem}
@@ -130,8 +108,6 @@ h2 em{font-style:normal;color:var(--green)}
 .sig.watch{background:#FCF3E3;color:#9A6B15}
 .sig.avoid{background:#F9E8E3;color:var(--red)}
 @media(max-width:640px){.screener{overflow-x:auto}}
-
-/* beyond */
 .beyond-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
 .beyond-card{border:1px solid var(--line);background:var(--card);overflow:hidden;display:flex;flex-direction:column}
 .beyond-card img,.beyond-card video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
@@ -140,14 +116,10 @@ h2 em{font-style:normal;color:var(--green)}
 .beyond-cap p{font-size:.85rem;color:var(--muted)}
 .beyond-text{margin-top:26px;max-width:680px;color:#39443E}
 @media(max-width:760px){.beyond-grid{grid-template-columns:1fr}}
-
-/* education */
 .edu{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid var(--line);background:var(--card);padding:26px;margin-bottom:18px}
 .edu h3{font-family:'Archivo',sans-serif;font-size:1.05rem;font-weight:700}
 .edu p{color:var(--muted);font-size:.92rem}
 .edu .mono{font-size:.8rem;color:var(--muted)}
-
-/* contact + footer */
 .contact{padding:88px 0}
 .contact p{max-width:560px;color:var(--muted);margin-bottom:30px}
 footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
@@ -171,7 +143,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
-    <span>TOOLING_COSTS <b class="down">▼ 90%</b></span>
+    <span>TOOLING_COSTS <b class="down">▼ 70%</b></span>
     <span>RETAIL_STORES <b class="up">▲ 29</b></span>
     <span>DAILY_ACTIVE_USERS <b class="up">▲ 10K+</b></span>
     <span>OTP_VENDOR_SPEND <b class="down">▼ $5K/mo</b></span>
@@ -179,7 +151,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
     <span>ISSUE_DETECTION <b class="up">▲ 60% faster</b></span>
     <span>CAMPAIGN_PARTICIPATION <b class="up">▲ ~70%</b></span>
     <span>MIGRATION_DOWNTIME <b class="down">▼ 0</b></span>
-    <span>TOOLING_COSTS <b class="down">▼ 90%</b></span>
+    <span>TOOLING_COSTS <b class="down">▼ 70%</b></span>
     <span>RETAIL_STORES <b class="up">▲ 29</b></span>
     <span>DAILY_ACTIVE_USERS <b class="up">▲ 10K+</b></span>
     <span>OTP_VENDOR_SPEND <b class="down">▼ $5K/mo</b></span>
@@ -228,7 +200,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
           The project I'm proudest of started as a side experiment: an <strong>agentic AI PR review
           assistant</strong> built on the Claude API that grew into a multi-step autonomous loop —
           inspecting code, calling tools, and posting review decisions on its own. It cut our internal
-          tooling costs by about 90%.
+          tooling costs by about 70%.
         </p>
         <p>
           Off the clock, I'm deep in the <strong>markets</strong> — equities, gold, BTC, F&amp;O —
@@ -259,7 +231,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
       </div>
       <div class="job-role">Software Development Engineer, Backend · converted from internship</div>
       <ul>
-        <li>Engineered an <strong>agentic AI-powered PR review assistant</strong> embedded in the team's Git workflow — a multi-step agentic loop with autonomous tool use enforcing code quality gates, cutting tooling costs ~90%.</li>
+        <li>Engineered an <strong>agentic AI-powered PR review assistant</strong> embedded in the team's Git workflow — a multi-step agentic loop with autonomous tool use enforcing code quality gates, cutting tooling costs ~70%.</li>
         <li>Architected <strong>pos-adapter-service</strong>, a microservice powering 29 retail stores: idempotency framework for exactly-once order processing, offline batch reconciliation, and webhook pipelines feeding the OMS.</li>
         <li>Delivered a platform-wide <strong>decimal precision migration</strong> across 5 services with zero downtime, redesigning refund logic per SOLID principles.</li>
         <li>Mitigated <strong>OTP abuse during DDoS attacks</strong> with validation and request-filtering, saving close to $5K/month in vendor costs.</li>
@@ -313,7 +285,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
           An AI reviewer that doesn't just comment — it acts. Built on the Claude API and Bitbucket,
           it evolved from a linear pipeline into a genuine agentic loop: deciding which files to inspect,
           what to flag, and posting review decisions autonomously. Runs on every PR, cut internal
-          tooling costs by roughly 90%.
+          tooling costs by roughly 70%.
         </p>
         <div class="tags">
           <span class="tag">Claude API</span><span class="tag">Agentic AI</span><span class="tag">Bitbucket API</span><span class="tag">Python</span>
@@ -436,7 +408,6 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
 </div>
 
 <script>
-/* ---------- typing terminal ---------- */
 (function(){
   const cmds = [
     "./deploy --service pos-adapter --stores 29",
@@ -463,7 +434,6 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   tickType();
 })();
 
-/* ---------- ambient candlestick canvas ---------- */
 (function(){
   const cv = document.getElementById("candles");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -502,7 +472,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   }
   function step(){
     t++;
-    if (t % 90 === 0) { // shift in a new candle every ~1.5s
+    if (t % 90 === 0) {
       candles.shift();
       const last = candles[candles.length-1];
       const drift = (Math.random()-0.47)*H*0.06;
@@ -517,7 +487,6 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   if (!reduced) requestAnimationFrame(step);
 })();
 
-/* ---------- scroll reveal ---------- */
 (function(){
   const io = new IntersectionObserver(es=>{
     es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
@@ -525,7 +494,6 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 })();
 
-/* ---------- sortable screener demo ---------- */
 (function(){
   const rows = [
     {sym:"RELIANCE", cpr:0.42, macd:"Bullish", ema:"3/3", score:8.6, sig:"buy"},
