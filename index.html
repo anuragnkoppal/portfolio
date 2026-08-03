@@ -14,133 +14,237 @@
 <meta name="twitter:image" content="https://anuragnkoppal.github.io/portfolio/assets/og-image.png">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <meta name="description" content="Backend SDE at DealShare. Java, Spring Boot, Kafka, AWS. Builder of event-driven systems and agentic AI tooling.">
-<meta property="og:title" content="Anurag N Koppal — Backend Software Engineer">
-<meta property="og:description" content="Event-driven backend systems in Java, Spring Boot & Kafka. Agentic AI tooling that reviews code on its own. Every metric shipped to production.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://anuragnkoppal.github.io/portfolio/">
-<meta property="og:image" content="https://anuragnkoppal.github.io/portfolio/assets/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Anurag N Koppal — Backend Software Engineer">
-<meta name="twitter:image" content="https://anuragnkoppal.github.io/portfolio/assets/og-image.png">
-<link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Archivo:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#FBFBF8; --ink:#151F1A; --green:#0B7A4B; --green-bright:#12A263;
-  --red:#C2402A; --muted:#66716B; --line:#DFE4DF; --card:#FFFFFF;
+  --paper:#0A0F0D; --ink:#EAF0EB; --green:#17C976; --green-bright:#22E08A;
+  --red:#FF6A55; --muted:#8B968F; --line:#212925; --card:#121815; --dark0:#050807;
+  --body:#C7D0CB;
+  --accent:#C9CED3; --accent-bright:#F2F3F4; --accent-dim:#8E9296;
+  --chrome:linear-gradient(180deg,#FFFFFF 0%,#E4E5E6 18%,#B7BABC 38%,#8D9093 50%,#C9CBCD 62%,#F5F5F6 80%,#FFFFFF 100%);
+  --chrome-diag:linear-gradient(135deg,#F6F7F7 0%,#D9DBDD 28%,#AAAEB1 52%,#E9EAEB 76%,#FAFAFA 100%);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px),
+    radial-gradient(ellipse 900px 480px at 50% -8%, rgba(230,232,234,.07), transparent 65%);
+  background-size:36px 36px, 36px 36px, 100% 100%;
+  color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased
+}
 .mono{font-family:'IBM Plex Mono',monospace}
-a{color:var(--green);text-decoration:none}
-a:hover{text-decoration:underline}
-a:focus-visible,button:focus-visible,th:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;color:var(--accent-bright)}
+a:focus-visible,button:focus-visible,th:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-nav{position:sticky;top:0;z-index:50;background:rgba(251,251,248,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(10,15,13,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 24px;max-width:1060px;margin:0 auto}
 .logo{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:.95rem;color:var(--ink)}
 .logo:hover{text-decoration:none}
 .nav-links{display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
 .nav-links a{color:var(--muted)}
-.nav-links a:hover{color:var(--green);text-decoration:none}
-@media(max-width:700px){.nav-links{display:none}}
-.ticker{border-bottom:1px solid var(--line);background:var(--ink);color:#E8EDE9;overflow:hidden;white-space:nowrap}
+.nav-links a:hover{color:var(--accent);text-decoration:none}
+.nav-toggle{display:none;background:none;border:1.5px solid var(--ink);width:38px;height:34px;position:relative;cursor:pointer}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{content:"";position:absolute;left:8px;right:8px;height:2px;background:var(--ink);transition:transform .2s,opacity .2s}
+.nav-toggle span{top:16px}
+.nav-toggle span::before{top:-7px}
+.nav-toggle span::after{top:7px}
+.nav-toggle.open span{opacity:0}
+.nav-toggle.open span::before{transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span::after{transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:700px){
+  .nav-links{position:fixed;top:57px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .25s ease}
+  .nav-links.open{max-height:320px}
+  .nav-links a{padding:14px 24px;border-top:1px solid var(--line)}
+  .nav-toggle{display:block}
+}
+
+.ticker{border-bottom:1px solid var(--line);background:var(--dark0);color:#E8EDE9;overflow:hidden;white-space:nowrap}
 .ticker-track{display:inline-block;padding:9px 0;animation:tick 34s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:.8rem}
 .ticker-track span{margin:0 26px}
 .up{color:#4CD48F}.down{color:#FF8A6B}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.ticker-track{animation:none;padding-left:24px}}
+
 header{position:relative;padding:96px 0 72px;border-bottom:1px solid var(--line);overflow:hidden}
-#candles{position:absolute;inset:0;width:100%;height:100%;opacity:.10;pointer-events:none}
-.hero-inner{position:relative}
-.terminal{display:inline-block;background:var(--ink);color:#D9E4DD;border-radius:8px;padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;margin-bottom:26px;box-shadow:0 8px 30px rgba(21,31,26,.18)}
-.terminal .dots{display:inline-flex;gap:6px;margin-right:14px;vertical-align:middle}
+#candles{position:absolute;inset:0;width:100%;height:100%;opacity:.16;pointer-events:none}
+.hero-inner{position:relative;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start}
+.terminal{display:inline-block;background:var(--dark0);color:#D9E4DD;border-radius:8px;padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;margin-bottom:26px;box-shadow:0 8px 30px rgba(0,0,0,.55);border:1px solid var(--line)}
+.terminal .dots{display:inline-flex;gap:6px;margin-right:14px;vertical-align:middle;cursor:pointer}
 .terminal .dots i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .terminal .dots i:nth-child(1){background:#FF6B5B}.terminal .dots i:nth-child(2){background:#FFC24A}.terminal .dots i:nth-child(3){background:#37C871}
 .terminal .prompt{color:#4CD48F}
 #typed{border-right:2px solid #4CD48F;padding-right:2px}
 h1{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.04;letter-spacing:-.015em;margin-bottom:24px}
-h1 em{font-style:normal;color:var(--green)}
+h1 em{font-style:normal;background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
 .hero-sub{max-width:620px;font-size:1.12rem;color:var(--muted);margin-bottom:34px}
 .hero-sub strong{color:var(--ink);font-weight:600}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap}
-.btn{display:inline-block;padding:12px 22px;border:1.5px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--ink);transition:background .15s,color .15s;background:var(--paper)}
-.btn:hover{background:var(--ink);color:var(--paper);text-decoration:none}
-.btn.primary{background:var(--green);border-color:var(--green);color:#fff}
-.btn.primary:hover{background:#08633C;border-color:#08633C}
+.btn{display:inline-block;padding:12px 22px;border:1.5px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--ink);transition:background .15s,color .15s,transform .15s;background:transparent}
+.btn:hover{background:var(--ink);color:var(--paper);text-decoration:none;transform:translateY(-2px)}
+.btn.primary{background:var(--chrome-diag);border-color:#B7BABC;color:#0A0F0D;text-shadow:0 1px 0 rgba(255,255,255,.4)}
+.btn.primary:hover{filter:brightness(1.08);border-color:#CFD1D3;color:#0A0F0D}
+.avatar-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:6px}
+.avatar-photo{width:132px;height:132px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 10px 26px rgba(0,0,0,.5)}
+@media(max-width:700px){.hero-inner{grid-template-columns:1fr}.avatar-wrap{order:-1}.avatar-photo{width:96px;height:96px}}
+
 section{padding:76px 0;border-bottom:1px solid var(--line)}
 .sec-label{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
 h2{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.01em;margin-bottom:34px;line-height:1.15}
-h2 em{font-style:normal;color:var(--green)}
+h2 em{font-style:normal;background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+
 .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
-.about-grid p{margin-bottom:16px}
+.about-grid p{margin-bottom:16px;color:var(--body)}
 .fact-card{background:var(--card);border:1px solid var(--line);padding:26px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;align-self:start}
 .fact-card dt{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;margin-top:16px}
 .fact-card dt:first-child{margin-top:0}
 .fact-card dd{color:var(--ink);font-weight:500;margin-top:2px}
 @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
-.job{border:1px solid var(--line);background:var(--card);padding:30px;margin-bottom:22px}
+
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stat-card{border:1px solid var(--line);background:var(--card);padding:28px 22px;text-align:center;will-change:transform}
+.stat-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(2.1rem,4.5vw,2.9rem);line-height:1;background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.stat-label{margin-top:10px;font-size:.92rem;color:var(--body)}
+.stat-cap{margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+@media(max-width:760px){.stat-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.stat-grid{grid-template-columns:1fr}}
+
+.job{border:1px solid var(--line);background:var(--card);padding:30px;margin-bottom:22px;will-change:transform}
 .job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:4px}
 .job-head h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.15rem}
 .job-date{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--muted)}
-.job-role{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--green);margin-bottom:16px}
+.job-role{font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--accent);margin-bottom:16px}
 .job ul{list-style:none}
-.job li{position:relative;padding-left:22px;margin-bottom:10px;color:#39443E;font-size:.98rem}
-.job li::before{content:"▸";position:absolute;left:0;color:var(--green)}
+.job li{position:relative;padding-left:22px;margin-bottom:10px;color:var(--body);font-size:.98rem}
+.job li::before{content:"▸";position:absolute;left:0;color:var(--accent)}
 .tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
 .tag{font-family:'IBM Plex Mono',monospace;font-size:.72rem;border:1px solid var(--line);padding:3px 10px;color:var(--muted)}
+
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}
-.proj{border:1px solid var(--line);background:var(--card);padding:28px;display:flex;flex-direction:column}
+.proj{border:1px solid var(--line);background:var(--card);padding:28px;display:flex;flex-direction:column;will-change:transform}
 .proj h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:10px}
-.proj p{color:#39443E;font-size:.95rem;flex:1}
+.proj p{color:var(--body);font-size:.95rem;flex:1}
 .proj .tags{margin-top:16px}
-.proj-badge{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--green);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.proj-badge{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 @media(max-width:760px){.proj-grid{grid-template-columns:1fr}}
+
 .screener{border:1px solid var(--line);background:var(--card);padding:28px}
 .screener-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px}
 .screener-head h3{font-family:'Archivo',sans-serif;font-weight:700;font-size:1.1rem}
 .screener-note{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--muted)}
 .screener table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.9rem}
 .screener th{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--line);cursor:pointer;user-select:none;white-space:nowrap}
-.screener th:hover{color:var(--green)}
+.screener th:hover{color:var(--accent)}
 .screener th .arrow{font-size:.65rem;margin-left:4px}
-.screener td{padding:10px 12px;border-bottom:1px solid var(--line)}
+.screener td{padding:10px 12px;border-bottom:1px solid var(--line);color:var(--body)}
+.screener td.mono{color:var(--ink)}
 .screener tr:last-child td{border-bottom:none}
 .sig{font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:2px 9px;border-radius:3px}
-.sig.buy{background:#E3F4EB;color:var(--green)}
-.sig.watch{background:#FCF3E3;color:#9A6B15}
-.sig.avoid{background:#F9E8E3;color:var(--red)}
+.sig.buy{background:rgba(23,201,118,.16);color:var(--green)}
+.sig.watch{background:rgba(255,196,74,.16);color:#FFC24A}
+.sig.avoid{background:rgba(255,106,85,.16);color:var(--red)}
 @media(max-width:640px){.screener{overflow-x:auto}}
+
 .beyond-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
 .beyond-card{border:1px solid var(--line);background:var(--card);overflow:hidden;display:flex;flex-direction:column}
 .beyond-card img,.beyond-card video{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
 .beyond-cap{padding:16px 18px}
 .beyond-cap h3{font-family:'Archivo',sans-serif;font-size:.98rem;font-weight:700;margin-bottom:4px}
 .beyond-cap p{font-size:.85rem;color:var(--muted)}
-.beyond-text{margin-top:26px;max-width:680px;color:#39443E}
+.beyond-text{margin-top:26px;max-width:680px;color:var(--body)}
 @media(max-width:760px){.beyond-grid{grid-template-columns:1fr}}
-.edu{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid var(--line);background:var(--card);padding:26px;margin-bottom:18px}
+
+.edu{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border:1px solid var(--line);background:var(--card);padding:26px;margin-bottom:18px;will-change:transform}
 .edu h3{font-family:'Archivo',sans-serif;font-size:1.05rem;font-weight:700}
 .edu p{color:var(--muted);font-size:.92rem}
 .edu .mono{font-size:.8rem;color:var(--muted)}
+
 .contact{padding:88px 0}
 .contact p{max-width:560px;color:var(--muted);margin-bottom:30px}
 footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+/* brushed-metal top-edge highlight on panels, Apple-hardware style */
+.job,.proj,.stat-card,.edu,.fact-card,.screener,.beyond-card{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+
+/* cursor trail canvas */
+#cursorFx{position:fixed;inset:0;pointer-events:none;z-index:40}
+
+/* chat widget */
+#chatToggle{position:fixed;bottom:22px;right:22px;z-index:60;background:var(--dark0);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:14px 20px;font-family:'IBM Plex Mono',monospace;font-size:.82rem;box-shadow:0 10px 24px rgba(0,0,0,.5);cursor:pointer;display:flex;align-items:center;gap:8px;transition:transform .15s}
+#chatToggle:hover{transform:translateY(-2px)}
+#chatToggle .dot{width:7px;height:7px;border-radius:50%;background:#4CD48F;box-shadow:0 0 0 0 rgba(76,212,143,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(76,212,143,.5)}70%{box-shadow:0 0 0 8px rgba(76,212,143,0)}100%{box-shadow:0 0 0 0 rgba(76,212,143,0)}}
+#chatPanel{position:fixed;bottom:88px;right:22px;z-index:60;width:320px;max-height:440px;background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 20px 50px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden}
+#chatPanel.open{display:flex}
+.chat-head{background:var(--dark0);color:var(--ink);padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}
+.chat-head button{background:none;border:none;color:var(--ink);font-size:1rem;cursor:pointer;line-height:1}
+.chat-body{padding:14px 16px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:10px;background:var(--paper)}
+.chat-bubble{padding:9px 13px;border-radius:10px;font-size:.87rem;max-width:88%;line-height:1.45}
+.chat-bubble.bot{background:var(--card);border:1px solid var(--line);color:var(--body);align-self:flex-start;border-bottom-left-radius:2px}
+.chat-bubble.me{background:var(--chrome-diag);color:#0A0F0D;align-self:flex-end;border-bottom-right-radius:2px}
+.chat-qs{padding:10px 12px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px;background:var(--card)}
+.chat-q{font-family:'IBM Plex Mono',monospace;font-size:.7rem;border:1px solid var(--line);background:var(--paper);padding:5px 9px;border-radius:14px;cursor:pointer;color:var(--ink);transition:background .15s,color .15s}
+.chat-q:hover{background:var(--accent);color:#0A0F0D;border-color:var(--accent)}
+@media(max-width:480px){#chatPanel{width:calc(100vw - 32px);right:16px}#chatToggle{right:16px}}
+
+/* easter egg overlay */
+#eggOverlay{position:fixed;inset:0;background:rgba(2,5,4,.96);z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px}
+#eggOverlay.open{display:flex}
+#eggOverlay h3{font-family:'Archivo',sans-serif;color:#4CD48F;font-size:clamp(1.6rem,5vw,2.6rem);margin-bottom:14px}
+#eggOverlay p{color:#D9E4DD;font-family:'IBM Plex Mono',monospace;font-size:.9rem;margin-bottom:26px;max-width:420px}
+#eggCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#eggOverlay .btn{position:relative;z-index:1}
+
+/* scroll progress bar */
+#progressBar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#8E9296,#F2F3F4,#8E9296);z-index:70;width:0%;box-shadow:0 0 8px rgba(240,241,242,.45)}
+
+/* live status bar */
+.livebar{background:var(--dark0);border-bottom:1px solid var(--line);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.72rem;padding:6px 24px;display:flex;gap:22px;flex-wrap:wrap;justify-content:center;align-items:center}
+.livebar b{color:var(--ink);font-weight:600}
+.livebar .seg{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#4CD48F;display:inline-block;animation:pulse 2s infinite}
+
+/* command palette */
+.cmdk-hintbtn{position:fixed;bottom:22px;left:22px;z-index:60;background:var(--dark0);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:14px 18px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;box-shadow:0 10px 24px rgba(0,0,0,.5);cursor:pointer;transition:transform .15s}
+.cmdk-hintbtn:hover{transform:translateY(-2px)}
+#cmdkOverlay{position:fixed;inset:0;background:rgba(2,5,4,.7);z-index:90;display:none;align-items:flex-start;justify-content:center;padding:14vh 20px 0}
+#cmdkOverlay.open{display:flex}
+.cmdk-box{width:min(560px,100%);background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden}
+.cmdk-input{width:100%;background:var(--dark0);border:none;border-bottom:1px solid var(--line);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:.95rem;padding:16px 18px}
+.cmdk-input:focus{outline:none}
+.cmdk-list{max-height:320px;overflow-y:auto}
+.cmdk-item{padding:12px 18px;font-family:'IBM Plex Mono',monospace;font-size:.85rem;color:var(--body);cursor:pointer;display:flex;justify-content:space-between;gap:12px}
+.cmdk-item .k{color:var(--muted);font-size:.72rem;text-transform:uppercase}
+.cmdk-item.active,.cmdk-item:hover{background:rgba(201,206,211,.12);color:var(--ink)}
+.cmdk-empty{padding:18px;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:.82rem}
+@media(max-width:480px){.cmdk-hintbtn{left:16px}}
+
+/* film grain overlay */
+.noise-overlay{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
 </style>
 </head>
 <body>
 
+<div id="progressBar" aria-hidden="true"></div>
+<div class="noise-overlay" aria-hidden="true"></div>
+
 <nav>
   <div class="nav-inner">
     <a class="logo" href="#top">anurag@koppal:~$</a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+    <div class="nav-links" id="navLinks">
       <a href="#about">about</a>
+      <a href="#impact">impact</a>
       <a href="#experience">experience</a>
       <a href="#projects">projects</a>
       <a href="#beyond">beyond</a>
@@ -150,8 +254,9 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   </div>
 </nav>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
+<div class="ticker">
+  <span class="sr-only">Key metrics: tooling costs down 70%, 29 retail stores powered, 10,000+ daily active users, OTP vendor spend down $5,000 per month, 15+ lifecycle events tracked, issue detection 60% faster, campaign participation up about 70%, migration downtime zero.</span>
+  <div class="ticker-track" aria-hidden="true">
     <span>TOOLING_COSTS <b class="down">▼ 70%</b></span>
     <span>RETAIL_STORES <b class="up">▲ 29</b></span>
     <span>DAILY_ACTIVE_USERS <b class="up">▲ 10K+</b></span>
@@ -171,24 +276,36 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   </div>
 </div>
 
+<div class="livebar mono">
+  <span class="seg"><span class="live-dot"></span>LIVE</span>
+  <span class="seg">GH: <b id="ghRepos">–</b> repos · <b id="ghFollowers">–</b> followers</span>
+  <span class="seg">NSE: <b id="nseStatus">…</b></span>
+  <span class="seg">IST: <b id="clockIST">--:--:--</b></span>
+</div>
+
 <header id="top">
   <canvas id="candles" aria-hidden="true"></canvas>
   <div class="wrap hero-inner">
-    <div class="terminal">
-      <span class="dots"><i></i><i></i><i></i></span>
-      <span class="prompt">anurag@koppal:~$</span> <span id="typed"></span>
+    <div>
+      <div class="terminal">
+        <span class="dots" id="eggDots" title="click me"><i></i><i></i><i></i></span>
+        <span class="prompt">anurag@koppal:~$</span> <span id="typed"></span>
+      </div>
+      <h1>Systems that hold.<br>Numbers that <em>move.</em></h1>
+      <p class="hero-sub">
+        I build <strong>event-driven backend systems</strong> in Java, Spring Boot, and Kafka
+        — and lately, <strong>agentic AI tooling</strong> that reviews code on its own.
+        Every metric in the strip above is from something I shipped to production.
+      </p>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:anuragnkoppal@gmail.com">Say hello ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/anuragnkoppal/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/anuragnkoppal" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="AnuragNKoppal_Resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+      </div>
     </div>
-    <h1>Systems that hold.<br>Numbers that <em>move.</em></h1>
-    <p class="hero-sub">
-      I build <strong>event-driven backend systems</strong> in Java, Spring Boot, and Kafka
-      — and lately, <strong>agentic AI tooling</strong> that reviews code on its own.
-      Every metric in the strip above is from something I shipped to production.
-    </p>
-    <div class="cta-row">
-      <a class="btn primary" href="mailto:anuragnkoppal@gmail.com">Say hello ↗</a>
-      <a class="btn" href="https://www.linkedin.com/in/anuragnkoppal/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="btn" href="https://github.com/anuragnkoppal" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="AnuragNKoppal_Resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+    <div class="avatar-wrap">
+      <img class="avatar-photo" src="assets/graduation.jpg" alt="Anurag N Koppal" loading="lazy">
     </div>
   </div>
 </header>
@@ -196,14 +313,14 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
 <section id="about">
   <div class="wrap reveal">
     <div class="sec-label">About</div>
-    <h2>Backend first. <em>Markets</em> always.</h2>
+    <h2>99.9% uptime. 100% <em>obsessed.</em></h2>
     <div class="about-grid">
       <div>
         <p>
           I'm <strong>Anurag</strong> — a backend engineer at <strong>DealShare</strong>, an Indian ecommerce
-          unicorn, where I converted from intern to full-time SDE. My day job is the unglamorous,
-          load-bearing kind of engineering: payment flows, refund logic, order-sync services for
-          physical retail stores, and the observability to know when any of it misbehaves.
+          unicorn, where I converted from intern to full-time SDE. My day job is the engineering
+          equivalent of keeping the lights on during a storm: payment flows, refund logic, order-sync
+          services for physical retail stores, and the observability to know the second any of it flickers.
         </p>
         <p>
           The project I'm proudest of started as a side experiment: an <strong>agentic AI PR review
@@ -228,12 +345,51 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   </div>
 </section>
 
+<section id="impact">
+  <div class="wrap">
+    <div class="sec-label reveal">Impact</div>
+    <h2 class="reveal">The scoreboard, <em>not the story.</em></h2>
+    <div class="stat-grid">
+      <div class="stat-card reveal tilt">
+        <div class="stat-num" data-target="70" data-suffix="%">0%</div>
+        <div class="stat-label">cut in internal tooling costs</div>
+        <div class="stat-cap">via the AI PR reviewer</div>
+      </div>
+      <div class="stat-card reveal tilt">
+        <div class="stat-num" data-target="29" data-suffix="">0</div>
+        <div class="stat-label">retail stores running on his service</div>
+        <div class="stat-cap">pos-adapter-service</div>
+      </div>
+      <div class="stat-card reveal tilt">
+        <div class="stat-num" data-target="10" data-prefix="" data-suffix="K+">0K+</div>
+        <div class="stat-label">daily active users tracked</div>
+        <div class="stat-cap">event pipeline, 15+ lifecycle events</div>
+      </div>
+      <div class="stat-card reveal tilt">
+        <div class="stat-num" data-target="60" data-suffix="%">0%</div>
+        <div class="stat-label">faster root-cause detection</div>
+        <div class="stat-cap">Datadog + CloudWatch observability</div>
+      </div>
+      <div class="stat-card reveal tilt">
+        <div class="stat-num" data-target="5" data-prefix="$" data-suffix="K/mo">$0K/mo</div>
+        <div class="stat-label">saved in vendor spend</div>
+        <div class="stat-cap">stopped OTP abuse during a DDoS attack</div>
+      </div>
+      <div class="stat-card reveal tilt">
+        <div class="stat-num">ZERO</div>
+        <div class="stat-label">downtime on a 5-service migration</div>
+        <div class="stat-cap">decimal precision rewrite, live traffic</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="experience">
   <div class="wrap">
     <div class="sec-label reveal">Experience</div>
     <h2 class="reveal">Shipped, monitored, <em>held.</em></h2>
 
-    <div class="job reveal">
+    <div class="job reveal tilt">
       <div class="job-head">
         <h3>DealShare — Ecommerce Unicorn</h3>
         <span class="job-date">Jul 2025 – Present</span>
@@ -254,7 +410,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
       </div>
     </div>
 
-    <div class="job reveal">
+    <div class="job reveal tilt">
       <div class="job-head">
         <h3>DealShare</h3>
         <span class="job-date">Jan 2025 – Jun 2025</span>
@@ -269,7 +425,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
       </div>
     </div>
 
-    <div class="job reveal">
+    <div class="job reveal tilt">
       <div class="job-head">
         <h3>Amazon ML Summer School</h3>
         <span class="job-date">Sep 2023 – Oct 2023</span>
@@ -287,7 +443,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
     <div class="sec-label reveal">Projects</div>
     <h2 class="reveal">Built on <em>my own</em> clock.</h2>
     <div class="proj-grid">
-      <div class="proj reveal">
+      <div class="proj reveal tilt">
         <div class="proj-badge">Production · Work</div>
         <h3>Agentic PR Review Assistant</h3>
         <p>
@@ -300,7 +456,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
           <span class="tag">Claude API</span><span class="tag">Agentic AI</span><span class="tag">Bitbucket API</span><span class="tag">Python</span>
         </div>
       </div>
-      <div class="proj reveal">
+      <div class="proj reveal tilt">
         <div class="proj-badge">Personal · Markets</div>
         <h3>Multi-Market Screener</h3>
         <p>
@@ -342,21 +498,21 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
     <div class="sec-label reveal">Beyond the terminal</div>
     <h2 class="reveal">Uphill, <em>offline.</em></h2>
     <div class="beyond-grid">
-      <div class="beyond-card reveal">
+      <div class="beyond-card reveal tilt">
         <img src="assets/trek_selfie.jpg" alt="Anurag on a foggy trek, beanie and backpack, surrounded by mist" loading="lazy">
         <div class="beyond-cap">
           <h3>Kumara Parvatha</h3>
           <p>South India's toughest trek, 14 km up and 14 km down. January fog included.</p>
         </div>
       </div>
-      <div class="beyond-card reveal">
+      <div class="beyond-card reveal tilt">
         <video src="assets/trek.mp4" autoplay muted loop playsinline aria-label="Video from a misty mountain trek"></video>
         <div class="beyond-cap">
           <h3>From the trail</h3>
           <p>What the summit actually looked like that morning.</p>
         </div>
       </div>
-      <div class="beyond-card reveal">
+      <div class="beyond-card reveal tilt">
         <img src="assets/graduation.jpg" alt="Anurag receiving his B.Tech degree on stage at PES University convocation" loading="lazy">
         <div class="beyond-cap">
           <h3>Convocation day</h3>
@@ -376,14 +532,14 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   <div class="wrap">
     <div class="sec-label reveal">Education</div>
     <h2 class="reveal">Foundation.</h2>
-    <div class="edu reveal">
+    <div class="edu reveal tilt">
       <div>
         <h3>PES University, Bangalore</h3>
         <p>B.Tech in Computer Science · GPA 8.43</p>
       </div>
       <span class="mono">2021 – 2025</span>
     </div>
-    <div class="edu reveal">
+    <div class="edu reveal tilt">
       <div>
         <h3>Amazon ML Summer School</h3>
         <p>Selected from 60,000+ applicants nationwide</p>
@@ -414,6 +570,38 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
     <span>© 2026 Anurag N Koppal</span>
     <span>Backend SDE · Bangalore</span>
   </footer>
+</div>
+
+<canvas id="cursorFx" aria-hidden="true"></canvas>
+
+<button id="chatToggle" aria-expanded="false" aria-controls="chatPanel">
+  <span class="dot"></span> Ask Anurag
+</button>
+<div id="chatPanel" role="dialog" aria-label="Ask Anurag a question">
+  <div class="chat-head">
+    <span class="mono">anurag@koppal:~$ chat</span>
+    <button id="chatClose" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-bubble bot">Hey, I'm a scripted stand-in for Anurag — pick a question below and I'll answer with what's actually on this page. For anything real, email him directly.</div>
+  </div>
+  <div class="chat-qs" id="chatQs"></div>
+</div>
+
+<div id="eggOverlay">
+  <canvas id="eggCanvas"></canvas>
+  <h3>🚀 BULL CONFIRMED</h3>
+  <p>You found the easter egg. Three clicks on the terminal dots — same instinct it takes to spot a breakout before everyone else does.</p>
+  <a class="btn primary" href="mailto:anuragnkoppal@gmail.com">Let's talk →</a>
+  <button class="btn" id="eggClose" style="margin-top:12px">Close</button>
+</div>
+
+<button class="cmdk-hintbtn mono" id="cmdkToggle" aria-label="Open command palette">⌘K</button>
+<div id="cmdkOverlay" role="dialog" aria-label="Command palette">
+  <div class="cmdk-box">
+    <input class="cmdk-input mono" id="cmdkInput" type="text" placeholder="Type a command… try 'resume' or 'github'" autocomplete="off" spellcheck="false">
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
 </div>
 
 <script>
@@ -471,7 +659,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
     candles.forEach((c,i)=>{
       const x = i*cw + cw/2;
       const up = c.close < c.open;
-      ctx.strokeStyle = up ? "#0B7A4B" : "#C2402A";
+      ctx.strokeStyle = up ? "#17C976" : "#FF6A55";
       ctx.fillStyle = ctx.strokeStyle;
       ctx.lineWidth = 1.4*devicePixelRatio;
       ctx.beginPath(); ctx.moveTo(x, c.hi); ctx.lineTo(x, c.lo); ctx.stroke();
@@ -479,7 +667,9 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
       ctx.fillRect(x-bw/2, top, bw, h);
     });
   }
+  let running = !reduced;
   function step(){
+    if (!running) return;
     t++;
     if (t % 90 === 0) {
       candles.shift();
@@ -493,6 +683,14 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
   }
   resize(); draw();
   window.addEventListener("resize", resize);
+  const headerEl = document.getElementById("top");
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      running = e.isIntersecting && !reduced;
+      if (running) requestAnimationFrame(step);
+    });
+  },{threshold:0});
+  io.observe(headerEl);
   if (!reduced) requestAnimationFrame(step);
 })();
 
@@ -544,6 +742,314 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
     th.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){e.preventDefault();activate();} });
   });
   render();
+})();
+
+/* mobile nav toggle */
+(function(){
+  const btn = document.getElementById("navToggle");
+  const links = document.getElementById("navLinks");
+  btn.addEventListener("click", ()=>{
+    const open = links.classList.toggle("open");
+    btn.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.querySelectorAll("a").forEach(a=>a.addEventListener("click", ()=>{
+    links.classList.remove("open"); btn.classList.remove("open"); btn.setAttribute("aria-expanded","false");
+  }));
+})();
+
+/* count-up stats */
+(function(){
+  const nums = document.querySelectorAll(".stat-num[data-target]");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function animate(el){
+    const target = parseFloat(el.dataset.target);
+    const prefix = el.dataset.prefix || "";
+    const suffix = el.dataset.suffix || "";
+    if (reduced) { el.textContent = prefix + target + suffix; return; }
+    const dur = 1200, start = performance.now();
+    function tick(now){
+      const p = Math.min(1, (now-start)/dur);
+      const eased = 1 - Math.pow(1-p, 3);
+      el.textContent = prefix + Math.round(eased*target) + suffix;
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const io = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ animate(e.target); io.unobserve(e.target); } });
+  },{threshold:.4});
+  nums.forEach(n=>io.observe(n));
+})();
+
+/* mouse-tilt hover on cards, skip on touch / reduced motion */
+(function(){
+  const coarse = window.matchMedia("(pointer: coarse)").matches;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (coarse || reduced) return;
+  document.querySelectorAll(".tilt").forEach(card=>{
+    card.addEventListener("mousemove", e=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(700px) rotateX(${(-py*5).toFixed(2)}deg) rotateY(${(px*6).toFixed(2)}deg) translateY(-2px)`;
+    });
+    card.addEventListener("mouseleave", ()=>{ card.style.transform = ""; });
+  });
+})();
+
+/* cursor trail — subtle green/red arrow particles, desktop only */
+(function(){
+  const coarse = window.matchMedia("(pointer: coarse)").matches;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cv = document.getElementById("cursorFx");
+  if (coarse || reduced) { cv.remove(); return; }
+  const ctx = cv.getContext("2d");
+  let particles = [];
+  function resize(){ cv.width = innerWidth; cv.height = innerHeight; }
+  resize(); window.addEventListener("resize", resize);
+  let last = 0;
+  window.addEventListener("mousemove", e=>{
+    const now = performance.now();
+    if (now - last < 45) return;
+    last = now;
+    const up = Math.random() > 0.5;
+    particles.push({x:e.clientX, y:e.clientY, life:1, up});
+    if (particles.length > 40) particles.shift();
+  });
+  function loop(){
+    ctx.clearRect(0,0,cv.width,cv.height);
+    particles.forEach(p=>{
+      p.life -= 0.03; p.y += p.up ? -0.6 : 0.6;
+      if (p.life <= 0) return;
+      ctx.globalAlpha = Math.max(0,p.life)*0.55;
+      ctx.fillStyle = p.up ? "#17C976" : "#FF6A55";
+      ctx.font = "10px IBM Plex Mono, monospace";
+      ctx.fillText(p.up ? "▲" : "▼", p.x, p.y);
+    });
+    ctx.globalAlpha = 1;
+    particles = particles.filter(p=>p.life>0);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+
+/* scripted "Ask Anurag" chat widget */
+(function(){
+  const toggle = document.getElementById("chatToggle");
+  const panel = document.getElementById("chatPanel");
+  const closeBtn = document.getElementById("chatClose");
+  const body = document.getElementById("chatBody");
+  const qWrap = document.getElementById("chatQs");
+  const email = "anuragnkoppal@gmail.com";
+
+  const qa = [
+    {q:"Why should we hire you?", a:"I ship things that hold under real load — payment flows, refund logic, a service running 29 retail stores — and I build my own tools when the off-the-shelf ones aren't good enough, like the AI PR reviewer that cut our tooling costs 70%."},
+    {q:"What's your biggest achievement?", a:"Probably the agentic PR review assistant — it went from a side experiment to something the whole team relies on, catching issues before a human even opens the PR."},
+    {q:"Are you open to relocation or remote?", a:"Depends on the role — happy to talk specifics. Best to ask directly: " + email},
+    {q:"What's your notice period?", a:"That's a real conversation, not a scripted one — email me at " + email + " and I'll give you a straight answer."},
+    {q:"What tech do you work with day to day?", a:"Java, Spring Boot, Kafka, and AWS on the backend, plus the Claude API for the agentic tooling. Full list is in the Experience section above."}
+  ];
+
+  qa.forEach(item=>{
+    const b = document.createElement("button");
+    b.className = "chat-q";
+    b.textContent = item.q;
+    b.addEventListener("click", ()=>{
+      const me = document.createElement("div");
+      me.className = "chat-bubble me";
+      me.textContent = item.q;
+      body.appendChild(me);
+      const bot = document.createElement("div");
+      bot.className = "chat-bubble bot";
+      bot.textContent = item.a;
+      body.appendChild(bot);
+      body.scrollTop = body.scrollHeight;
+      b.disabled = true;
+      b.style.opacity = .4;
+    });
+    qWrap.appendChild(b);
+  });
+
+  function open(){ panel.classList.add("open"); toggle.setAttribute("aria-expanded","true"); }
+  function close(){ panel.classList.remove("open"); toggle.setAttribute("aria-expanded","false"); }
+  toggle.addEventListener("click", ()=> panel.classList.contains("open") ? close() : open());
+  closeBtn.addEventListener("click", close);
+})();
+
+/* easter egg: click the terminal's traffic-light dots 3x fast */
+(function(){
+  const dots = document.getElementById("eggDots");
+  const overlay = document.getElementById("eggOverlay");
+  const closeBtn = document.getElementById("eggClose");
+  const cv = document.getElementById("eggCanvas");
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let clicks = 0, timer = null;
+
+  dots.addEventListener("click", ()=>{
+    clicks++;
+    clearTimeout(timer);
+    timer = setTimeout(()=>{ clicks = 0; }, 900);
+    if (clicks >= 3) { clicks = 0; fireEgg(); }
+  });
+
+  function fireEgg(){
+    overlay.classList.add("open");
+    if (!reduced) confetti();
+  }
+  closeBtn.addEventListener("click", ()=> overlay.classList.remove("open"));
+  overlay.addEventListener("click", e=>{ if (e.target === overlay) overlay.classList.remove("open"); });
+
+  function confetti(){
+    const ctx = cv.getContext("2d");
+    cv.width = innerWidth; cv.height = innerHeight;
+    const colors = ["#4CD48F","#17C976","#FFC24A","#FF8A6B"];
+    let bits = Array.from({length:120}, ()=>({
+      x: Math.random()*cv.width, y: -20 - Math.random()*cv.height*0.3,
+      vy: 2+Math.random()*3, vx: (Math.random()-0.5)*2,
+      size: 4+Math.random()*5, color: colors[Math.floor(Math.random()*colors.length)],
+      rot: Math.random()*360, vr: (Math.random()-0.5)*10
+    }));
+    let frame = 0;
+    function step(){
+      if (!overlay.classList.contains("open")) return;
+      frame++;
+      ctx.clearRect(0,0,cv.width,cv.height);
+      bits.forEach(b=>{
+        b.x += b.vx; b.y += b.vy; b.rot += b.vr;
+        ctx.save(); ctx.translate(b.x,b.y); ctx.rotate(b.rot*Math.PI/180);
+        ctx.fillStyle = b.color; ctx.fillRect(-b.size/2,-b.size/2,b.size,b.size*0.6);
+        ctx.restore();
+      });
+      bits = bits.filter(b=>b.y < cv.height+30);
+      if (frame < 260 && bits.length) requestAnimationFrame(step);
+      else ctx.clearRect(0,0,cv.width,cv.height);
+    }
+    step();
+  }
+})();
+
+/* scroll progress bar */
+(function(){
+  const bar = document.getElementById("progressBar");
+  function update(){
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = max > 0 ? Math.min(100, (h.scrollTop/max*100)) + "%" : "0%";
+  }
+  window.addEventListener("scroll", update, {passive:true});
+  window.addEventListener("resize", update);
+  update();
+})();
+
+/* live status bar: GitHub public API + IST clock + NSE open/closed */
+(function(){
+  const ghRepos = document.getElementById("ghRepos");
+  const ghFollowers = document.getElementById("ghFollowers");
+  fetch("https://api.github.com/users/anuragnkoppal")
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => {
+      if (ghRepos) ghRepos.textContent = d.public_repos ?? "–";
+      if (ghFollowers) ghFollowers.textContent = d.followers ?? "–";
+    })
+    .catch(() => { if (ghRepos) ghRepos.textContent = "–"; if (ghFollowers) ghFollowers.textContent = "–"; });
+
+  const nseEl = document.getElementById("nseStatus");
+  const clockEl = document.getElementById("clockIST");
+  function getIST(){ return new Date(new Date().toLocaleString("en-US", {timeZone:"Asia/Kolkata"})); }
+  function tick(){
+    const ist = getIST();
+    const h = ist.getHours(), m = ist.getMinutes(), s = ist.getSeconds(), day = ist.getDay();
+    const mins = h*60+m;
+    const isOpen = day>=1 && day<=5 && mins>=555 && mins<930; // 09:15–15:30 IST, Mon–Fri
+    if (nseEl) nseEl.innerHTML = isOpen ? '<span class="up">● OPEN</span>' : '<span class="down">● CLOSED</span>';
+    if (clockEl) clockEl.textContent = String(h).padStart(2,"0")+":"+String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+
+/* command palette (Cmd+K / Ctrl+K) */
+(function(){
+  const overlay = document.getElementById("cmdkOverlay");
+  const input = document.getElementById("cmdkInput");
+  const list = document.getElementById("cmdkList");
+  const trigger = document.getElementById("cmdkToggle");
+  const email = "anuragnkoppal@gmail.com";
+
+  function scrollToId(id){ close(); const el = document.getElementById(id); if (el) el.scrollIntoView({behavior:"smooth"}); }
+
+  const commands = [
+    {label:"Go to About", key:"nav", run:()=>scrollToId("about")},
+    {label:"Go to Impact", key:"nav", run:()=>scrollToId("impact")},
+    {label:"Go to Experience", key:"nav", run:()=>scrollToId("experience")},
+    {label:"Go to Projects", key:"nav", run:()=>scrollToId("projects")},
+    {label:"Go to Beyond the Terminal", key:"nav", run:()=>scrollToId("beyond")},
+    {label:"Go to Contact", key:"nav", run:()=>scrollToId("contact")},
+    {label:"Open resume (PDF)", key:"open", run:()=>{ close(); window.open("AnuragNKoppal_Resume.pdf","_blank"); }},
+    {label:"Email Anurag", key:"mailto", run:()=>{ close(); window.location.href = "mailto:"+email; }},
+    {label:"Open LinkedIn", key:"open", run:()=>{ close(); window.open("https://www.linkedin.com/in/anuragnkoppal/","_blank"); }},
+    {label:"Open GitHub", key:"open", run:()=>{ close(); window.open("https://github.com/anuragnkoppal","_blank"); }},
+    {label:"Ask Anurag a question", key:"chat", run:()=>{ close(); const t = document.getElementById("chatToggle"); if (t) t.click(); }},
+    {label:"sudo make hire --anurag", key:"easter egg", run:()=>{ close(); const d = document.getElementById("eggDots"); if (d) { d.click(); d.click(); d.click(); } }}
+  ];
+
+  let filtered = commands.slice(), activeIdx = 0;
+
+  function render(){
+    list.innerHTML = filtered.length ? filtered.map((c,i)=>`
+      <div class="cmdk-item ${i===activeIdx?'active':''}" data-i="${i}">
+        <span>${c.label}</span><span class="k">${c.key}</span>
+      </div>`).join("") : `<div class="cmdk-empty">No matches. Try "resume", "contact", "github"…</div>`;
+  }
+  function filterCmds(){
+    const v = input.value.toLowerCase();
+    filtered = commands.filter(c => c.label.toLowerCase().includes(v));
+    activeIdx = 0;
+    render();
+  }
+  function open(){
+    overlay.classList.add("open");
+    input.value = "";
+    filterCmds();
+    setTimeout(()=>input.focus(), 30);
+  }
+  function close(){ overlay.classList.remove("open"); }
+
+  trigger.addEventListener("click", open);
+  window.addEventListener("keydown", e=>{
+    if ((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==="k") { e.preventDefault(); overlay.classList.contains("open") ? close() : open(); }
+    else if (e.key === "Escape" && overlay.classList.contains("open")) close();
+  });
+  input.addEventListener("input", filterCmds);
+  input.addEventListener("keydown", e=>{
+    if (e.key === "ArrowDown") { e.preventDefault(); activeIdx = Math.min(activeIdx+1, filtered.length-1); render(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); activeIdx = Math.max(activeIdx-1, 0); render(); }
+    else if (e.key === "Enter") { e.preventDefault(); if (filtered[activeIdx]) filtered[activeIdx].run(); }
+  });
+  list.addEventListener("click", e=>{
+    const item = e.target.closest(".cmdk-item");
+    if (!item) return;
+    const i = +item.dataset.i;
+    if (filtered[i]) filtered[i].run();
+  });
+  overlay.addEventListener("click", e=>{ if (e.target === overlay) close(); });
+})();
+
+/* magnetic pull on primary CTAs + floating buttons, desktop only */
+(function(){
+  const coarse = window.matchMedia("(pointer: coarse)").matches;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (coarse || reduced) return;
+  document.querySelectorAll(".btn.primary, #chatToggle, #cmdkToggle").forEach(el=>{
+    el.addEventListener("mousemove", e=>{
+      const r = el.getBoundingClientRect();
+      const x = e.clientX - (r.left + r.width/2);
+      const y = e.clientY - (r.top + r.height/2);
+      el.style.transform = `translate(${(x*0.18).toFixed(1)}px, ${(y*0.18).toFixed(1)}px)`;
+    });
+    el.addEventListener("mouseleave", ()=>{ el.style.transform = ""; });
+  });
 })();
 </script>
 <script data-goatcounter="https://anuragnkoppal.goatcounter.com/count"
