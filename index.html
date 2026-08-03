@@ -281,7 +281,7 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
 
 <div class="livebar mono">
   <span class="seg"><span class="live-dot"></span>LIVE</span>
-  <span class="seg">GH: <b id="ghRepos">–</b> repos · <b id="ghFollowers">–</b> followers</span>
+  <span class="seg">GH: <b id="ghRepos">13</b> repos · <b id="ghFollowers">3</b> followers</span>
   <span class="seg">NSE: <b id="nseStatus">…</b></span>
   <span class="seg">IST: <b id="clockIST">--:--:--</b></span>
 </div>
@@ -951,13 +951,16 @@ footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;col
 (function(){
   const ghRepos = document.getElementById("ghRepos");
   const ghFollowers = document.getElementById("ghFollowers");
+  // Baked-in numbers above are real as of the last deploy. Only upgrade them if a
+  // fresh fetch succeeds — never overwrite with a placeholder on failure (rate limits,
+  // offline, blocked requests, etc. should just leave the last-known-good numbers up).
   fetch("https://api.github.com/users/anuragnkoppal")
-    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(r => r.ok ? r.json() : Promise.reject(new Error("HTTP "+r.status)))
     .then(d => {
-      if (ghRepos) ghRepos.textContent = d.public_repos ?? "–";
-      if (ghFollowers) ghFollowers.textContent = d.followers ?? "–";
+      if (ghRepos && typeof d.public_repos === "number") ghRepos.textContent = d.public_repos;
+      if (ghFollowers && typeof d.followers === "number") ghFollowers.textContent = d.followers;
     })
-    .catch(() => { if (ghRepos) ghRepos.textContent = "–"; if (ghFollowers) ghFollowers.textContent = "–"; });
+    .catch(() => {});
 
   const nseEl = document.getElementById("nseStatus");
   const clockEl = document.getElementById("clockIST");
